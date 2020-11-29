@@ -1,23 +1,23 @@
-import logo from './logo.svg';
 import './App.css';
+import ButtonAppBar from "./components/searchbar"
+// import CustomizedTimeline from "./components/body"
+import wineme from "./wineme.png"
+import AppFooter from "./components/footer"
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      
+     <ButtonAppBar />
+     
+    <div>
+   <img className= "wineme" src={wineme} alt="wineme" />
+<AppFooter />
+    </div>
+  
+     
+ 
+    
     </div>
   );
 }
