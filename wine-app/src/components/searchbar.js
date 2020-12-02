@@ -6,6 +6,7 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
+import { Link } from 'react-router-dom'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -19,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function ButtonAppBar() {
+export default function SearchBar() {
   const classes = useStyles();
 
   return (
@@ -30,11 +31,28 @@ export default function ButtonAppBar() {
             {/* <MenuIcon /> */}
           </IconButton>
           <Typography variant="h6" className={classes.title}>
-            
+
           </Typography>
-          <Button color="inherit">Blog</Button>
-          <Button color="inherit">Wines</Button>
-          <Button color="inherit">Reviews</Button>
+
+          <Link to="home" style={{color:"white",textDecoration: 'none'}}>
+            <Button color="inherit">Home</Button>
+          </Link>
+
+
+          <Link to="/winelist" style={{color:"white",textDecoration: 'none'}}>
+            <Button color="inherit">
+              Wines</Button>
+          </Link>
+
+          <Link to="/reviews" style={{color:"white",textDecoration: 'none'}}>
+            <Button color="inherit">Reviews</Button>
+          </Link>
+
+          <Link to="/blog" style={{color:"white", textDecoration: 'none'}}>
+            <Button color="inherit">Blog</Button>
+
+          </Link>
+          <Button color="inherit">Sign in</Button>
         </Toolbar>
       </AppBar>
     </div>

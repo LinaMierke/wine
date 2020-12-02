@@ -1,31 +1,40 @@
 import React from 'react';
-import AppBar from '@material-ui/core/AppBar';
 import Button from '@material-ui/core/Button';
-import CameraIcon from '@material-ui/icons/PhotoCamera';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Grid from '@material-ui/core/Grid';
-import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Link from '@material-ui/core/Link';
+import reviews from "./winereview.png"  
+import Timeline from '@material-ui/lab/Timeline';
+import TimelineItem from '@material-ui/lab/TimelineItem';
+import TimelineSeparator from '@material-ui/lab/TimelineSeparator';
+import TimelineConnector from '@material-ui/lab/TimelineConnector';
+import TimelineContent from '@material-ui/lab/TimelineContent';
+import TimelineOppositeContent from '@material-ui/lab/TimelineOppositeContent';
+import TimelineDot from '@material-ui/lab/TimelineDot';
+import LaptopMacIcon from '@material-ui/icons/LaptopMac';
+import LocalBarIcon from '@material-ui/icons/LocalBar';
+import RepeatIcon from '@material-ui/icons/Repeat';
+import Paper from '@material-ui/core/Paper';
 
-function Copyright() {
-  return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      {'Copyright © '}
-      <Link color="inherit" href="https://material-ui.com/">
-        Your Website
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
+// function Copyright() {
+//   return (
+//     <Typography variant="body2" color="textSecondary" align="center">
+//       {'Copyright © '}
+//       <Link color="inherit" href="https://material-ui.com/">
+//         Your Website
+//       </Link>{' '}
+//       {new Date().getFullYear()}
+//       {'.'}
+//     </Typography>
+//   );
+// }
 
 const useStyles = makeStyles((theme) => ({
   icon: {
@@ -57,45 +66,129 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.background.paper,
     padding: theme.spacing(6),
   },
+  paper: {
+    padding: '6px 16px',
+  },
+  secondaryTail: {
+    backgroundColor: theme.palette.secondary.main,
+  },
 }));
 
 const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
-export default function Album() {
+export default function Reviews() {
   const classes = useStyles();
 
   return (
+    
     <React.Fragment>
+    
       <CssBaseline />
-      <AppBar position="relative">
+      <div>
+        <img className= "wines" src={reviews} alt="reviews" />
+      </div>
+      {/* <AppBar position="relative" style={{backgroundColor: 'black'}}>
         <Toolbar>
           <CameraIcon className={classes.icon} />
           <Typography variant="h6" color="inherit" noWrap>
             Album layout
           </Typography>
         </Toolbar>
-      </AppBar>
+      </AppBar> */}
       <main>
         {/* Hero unit */}
         <div className={classes.heroContent}>
           <Container maxWidth="sm">
-            <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>
+          <Timeline align="alternate">
+      {/* <TimelineItem> */}
+        {/* <TimelineOppositeContent>
+          <Typography variant="body2" color="textSecondary">
+            9:30 am
+          </Typography>
+        </TimelineOppositeContent> */}
+        {/* <TimelineSeparator>
+          <TimelineDot>
+            <FastfoodIcon />
+          </TimelineDot>
+          <TimelineConnector />
+        </TimelineSeparator> */}
+        {/* <TimelineContent>
+          <Paper elevation={3} className={classes.paper}>
+            <Typography variant="h6" component="h1">
+              Eat
+            </Typography>
+            <Typography>Because you need strength</Typography>
+          </Paper>
+        </TimelineContent> */}
+      {/* </TimelineItem> */}
+      <TimelineItem>
+        <TimelineOppositeContent>
+          
+        </TimelineOppositeContent>
+        <TimelineSeparator>
+          <TimelineDot color="black">
+            <LocalBarIcon />
+          </TimelineDot>
+          <TimelineConnector />
+        </TimelineSeparator>
+        <TimelineContent>
+          <Paper elevation={3} className={classes.paper}>
+            <Typography variant="h6" component="h1">
+              Drink
+            </Typography>
+            <Typography>Because it&apos;s awesome!</Typography>
+          </Paper>
+        </TimelineContent>
+      </TimelineItem>
+      <TimelineItem>
+        <TimelineSeparator>
+          <TimelineDot color="" variant="outlined">
+            <LaptopMacIcon color="black"/>
+          </TimelineDot>
+          <TimelineConnector className={classes.secondaryTail} />
+        </TimelineSeparator>
+        <TimelineContent>
+          <Paper elevation={3} className={classes.paper}>
+            <Typography variant="h6" component="h1">
+              Review
+            </Typography>
+            <Typography>Because you love us!</Typography>
+          </Paper>
+        </TimelineContent>
+      </TimelineItem>
+      <TimelineItem >
+        <TimelineSeparator color="black">
+          <TimelineDot color="black">
+            <RepeatIcon />
+          </TimelineDot>
+        </TimelineSeparator>
+        <TimelineContent>
+          <Paper elevation={3} className={classes.paper}>
+            <Typography variant="h6" component="h1">
+              Repeat
+            </Typography>
+            <Typography>Because why not?!</Typography>
+          </Paper>
+        </TimelineContent>
+      </TimelineItem>
+    </Timeline>
+            {/* <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>
               Album layout
             </Typography>
             <Typography variant="h5" align="center" color="textSecondary" paragraph>
               Something short and leading about the collection below—its contents, the creator, etc.
               Make it short and sweet, but not too short so folks don&apos;t simply skip over it
               entirely.
-            </Typography>
+            </Typography> */}
             <div className={classes.heroButtons}>
               <Grid container spacing={2} justify="center">
                 <Grid item>
-                  <Button variant="contained" color="primary">
+                  <Button variant="contained" color="primary" style={{backgroundColor: '#112A3B'}}>
                     Main call to action
                   </Button>
                 </Grid>
                 <Grid item>
-                  <Button variant="outlined" color="primary">
+                  <Button variant="outlined" color="primary" style={{borderColor: '#112A3B', color: '#112A3B'}}>
                     Secondary action
                   </Button>
                 </Grid>
@@ -137,7 +230,7 @@ export default function Album() {
         </Container>
       </main>
       {/* Footer */}
-      <footer className={classes.footer}>
+      {/* <footer className={classes.footer}>
         <Typography variant="h6" align="center" gutterBottom>
           Footer
         </Typography>
@@ -145,7 +238,7 @@ export default function Album() {
           Something here to give the footer a purpose!
         </Typography>
         <Copyright />
-      </footer>
+      </footer> */}
       {/* End footer */}
     </React.Fragment>
   );
