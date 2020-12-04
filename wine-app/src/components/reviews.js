@@ -10,7 +10,7 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Link from '@material-ui/core/Link';
-import reviews from "./winereview.png"  
+import reviews from "./winereview.png"
 import Timeline from '@material-ui/lab/Timeline';
 import TimelineItem from '@material-ui/lab/TimelineItem';
 import TimelineSeparator from '@material-ui/lab/TimelineSeparator';
@@ -22,6 +22,7 @@ import LaptopMacIcon from '@material-ui/icons/LaptopMac';
 import LocalBarIcon from '@material-ui/icons/LocalBar';
 import RepeatIcon from '@material-ui/icons/Repeat';
 import Paper from '@material-ui/core/Paper';
+import "./reviews.css"
 
 // function Copyright() {
 //   return (
@@ -76,16 +77,17 @@ const useStyles = makeStyles((theme) => ({
 
 const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
-export default function Reviews() {
+export default function Reviews(props) {
   const classes = useStyles();
 
   return (
-    
+
     <React.Fragment>
-    
+
       <CssBaseline />
+      {console.log(props.reviews.data)}
       <div>
-        <img className= "wines" src={reviews} alt="reviews" />
+        <img className="wines" src={reviews} alt="reviews" />
       </div>
       {/* <AppBar position="relative" style={{backgroundColor: 'black'}}>
         <Toolbar>
@@ -99,20 +101,20 @@ export default function Reviews() {
         {/* Hero unit */}
         <div className={classes.heroContent}>
           <Container maxWidth="sm">
-          <Timeline align="alternate">
-      {/* <TimelineItem> */}
-        {/* <TimelineOppositeContent>
+            <Timeline align="alternate">
+              {/* <TimelineItem> */}
+              {/* <TimelineOppositeContent>
           <Typography variant="body2" color="textSecondary">
             9:30 am
           </Typography>
         </TimelineOppositeContent> */}
-        {/* <TimelineSeparator>
+              {/* <TimelineSeparator>
           <TimelineDot>
             <FastfoodIcon />
           </TimelineDot>
           <TimelineConnector />
         </TimelineSeparator> */}
-        {/* <TimelineContent>
+              {/* <TimelineContent>
           <Paper elevation={3} className={classes.paper}>
             <Typography variant="h6" component="h1">
               Eat
@@ -120,58 +122,58 @@ export default function Reviews() {
             <Typography>Because you need strength</Typography>
           </Paper>
         </TimelineContent> */}
-      {/* </TimelineItem> */}
-      <TimelineItem>
-        <TimelineOppositeContent>
-          
-        </TimelineOppositeContent>
-        <TimelineSeparator>
-          <TimelineDot color="black">
-            <LocalBarIcon />
-          </TimelineDot>
-          <TimelineConnector />
-        </TimelineSeparator>
-        <TimelineContent>
-          <Paper elevation={3} className={classes.paper}>
-            <Typography variant="h6" component="h1">
-              Drink
+              {/* </TimelineItem> */}
+              <TimelineItem>
+                <TimelineOppositeContent>
+
+                </TimelineOppositeContent>
+                <TimelineSeparator>
+                  <TimelineDot color="black">
+                    <LocalBarIcon />
+                  </TimelineDot>
+                  <TimelineConnector />
+                </TimelineSeparator>
+                <TimelineContent>
+                  <Paper elevation={3} className={classes.paper}>
+                    <Typography variant="h6" component="h1">
+                      Drink
             </Typography>
-            <Typography>Because it&apos;s awesome!</Typography>
-          </Paper>
-        </TimelineContent>
-      </TimelineItem>
-      <TimelineItem>
-        <TimelineSeparator>
-          <TimelineDot color="" variant="outlined">
-            <LaptopMacIcon color="black"/>
-          </TimelineDot>
-          <TimelineConnector className={classes.secondaryTail} />
-        </TimelineSeparator>
-        <TimelineContent>
-          <Paper elevation={3} className={classes.paper}>
-            <Typography variant="h6" component="h1">
-              Review
+                    <Typography>Because it&apos;s awesome!</Typography>
+                  </Paper>
+                </TimelineContent>
+              </TimelineItem>
+              <TimelineItem>
+                <TimelineSeparator>
+                  <TimelineDot color="" variant="outlined">
+                    <LaptopMacIcon color="black" />
+                  </TimelineDot>
+                  <TimelineConnector className={classes.secondaryTail} />
+                </TimelineSeparator>
+                <TimelineContent>
+                  <Paper elevation={3} className={classes.paper}>
+                    <Typography variant="h6" component="h1">
+                      Review
             </Typography>
-            <Typography>Because you love us!</Typography>
-          </Paper>
-        </TimelineContent>
-      </TimelineItem>
-      <TimelineItem >
-        <TimelineSeparator color="black">
-          <TimelineDot color="black">
-            <RepeatIcon />
-          </TimelineDot>
-        </TimelineSeparator>
-        <TimelineContent>
-          <Paper elevation={3} className={classes.paper}>
-            <Typography variant="h6" component="h1">
-              Repeat
+                    <Typography>Because you love us!</Typography>
+                  </Paper>
+                </TimelineContent>
+              </TimelineItem>
+              <TimelineItem >
+                <TimelineSeparator color="black">
+                  <TimelineDot color="black">
+                    <RepeatIcon />
+                  </TimelineDot>
+                </TimelineSeparator>
+                <TimelineContent>
+                  <Paper elevation={3} className={classes.paper}>
+                    <Typography variant="h6" component="h1">
+                      Repeat
             </Typography>
-            <Typography>Because why not?!</Typography>
-          </Paper>
-        </TimelineContent>
-      </TimelineItem>
-    </Timeline>
+                    <Typography>Because why not?!</Typography>
+                  </Paper>
+                </TimelineContent>
+              </TimelineItem>
+            </Timeline>
             {/* <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>
               Album layout
             </Typography>
@@ -183,12 +185,12 @@ export default function Reviews() {
             <div className={classes.heroButtons}>
               <Grid container spacing={2} justify="center">
                 <Grid item>
-                  <Button variant="contained" color="primary" style={{backgroundColor: '#112A3B'}}>
+                  <Button variant="contained" color="primary" style={{ backgroundColor: '#112A3B' }}>
                     Main call to action
                   </Button>
                 </Grid>
                 <Grid item>
-                  <Button variant="outlined" color="primary" style={{borderColor: '#112A3B', color: '#112A3B'}}>
+                  <Button variant="outlined" color="primary" style={{ borderColor: '#112A3B', color: '#112A3B' }}>
                     Secondary action
                   </Button>
                 </Grid>
@@ -199,21 +201,36 @@ export default function Reviews() {
         <Container className={classes.cardGrid} maxWidth="md">
           {/* End hero unit */}
           <Grid container spacing={4}>
-            {cards.map((card) => (
-              <Grid item key={card} xs={12} sm={6} md={4}>
+            {props.reviews.data.map((reviews, index) => (
+              <Grid item key={index} xs={12} sm={6} md={4}>
                 <Card className={classes.card}>
+                <img src={reviews.picture} className="picture"/>
                   <CardMedia
+                 
+
                     className={classes.cardMedia}
-                    image="https://source.unsplash.com/random"
-                    title="Image title"
+                  // image="https://source.unsplash.com/random"
+                  // title="Image title"
                   />
                   <CardContent className={classes.cardContent}>
                     <Typography gutterBottom variant="h5" component="h2">
-                      Heading
+                      {reviews.name}
                     </Typography>
                     <Typography>
-                      This is a media card. You can use this section to describe the content.
-                    </Typography>
+                      {reviews.country}                    
+                      </Typography>
+                      <Typography>
+                      {reviews.review}                    
+                      </Typography>
+                      <Typography>
+                      {reviews.paring}                    
+                      </Typography>
+                      <Typography>
+                      {reviews.type}                    
+                      </Typography>
+                      <Typography>
+                      {reviews.score}                    
+                      </Typography>
                   </CardContent>
                   <CardActions>
                     <Button size="small" color="primary">

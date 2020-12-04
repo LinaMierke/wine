@@ -6,9 +6,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import wines from './wine7.png'
 import './wineList.css'
-import poppy from './poppy.png'
-
-
 
 
 
@@ -59,7 +56,7 @@ export default function WineList(props) {
   return (
     <React.Fragment>
       <CssBaseline />
-{/* {console.log(props.wines)} */}
+
       <main >
 
         
@@ -68,12 +65,12 @@ export default function WineList(props) {
 
         <Container className={classes.cardGrid} maxWidth="md" >
           <Grid container spacing={5} >
-          
             {props.wineList.data.map((wines,index) => (
 
               <Grid item key={index} xs={12} sm={6} md={4}>
-                <img className="poppy" src={poppy} alt="wineme"  />
-                <Typography gutterBottom variant="h5" component="h2" >
+              
+                <img src={wines.Image} className="bottles"/>
+                <Typography gutterBottom variant="h5" component="h2" style={{textAlign:'center', fontWeight:'bold', fontFamily:'serif'}}>
                   {wines.Name}
                     </Typography>
                 <Typography>

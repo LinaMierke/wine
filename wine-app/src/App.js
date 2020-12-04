@@ -21,9 +21,11 @@ class App extends Component {
     }
   }
   componentDidMount() {
-    console.log('mounted')
+    // console.log('mounted')
 
     let url = "https://wineoclock.herokuapp.com/wine"
+    let url2="https://wineoclock.herokuapp.com/reviews"
+
     axios.get(url)
     .then((res) => {
       return res
@@ -33,10 +35,21 @@ class App extends Component {
         data: data
       })
     })
+    axios.get(url2)
+    .then((res) => {
+      return res
+    })
+    .then((reviews)=> {
+      this.setState({
+        reviews: reviews
+      })
+    })
   }
   rerenderParentCallback(){
     console.log('updatedState')
-    let url = "https://wineoclock.herokuapp.com/wine";
+    let url = "https://wineoclock.herokuapp.com/wine"
+    let url2="https://wineoclock.herokuapp.com/reviews"
+
     axios.get(url)
     .then((res)=> {
       return res
@@ -44,10 +57,20 @@ class App extends Component {
     .then((data)=> {
       this.setState({data: data})
     })
+    axios.get(url2)
+    .then((res) => {
+      return res
+    })
+    .then((reviews)=> {
+      this.setState({
+        reviews: reviews
+      })
+    })
   }
 
   render() {
-    console.log(this.state.data)
+    // console.log(this.state.data)
+    // console.log(this.state.reviews)
     
 
     return (
@@ -69,7 +92,7 @@ class App extends Component {
           </Route>
 
           <Route exact path="/reviews">
-            <Reviews/>
+            <Reviews reviews={this.state.reviews}/>
           </Route>
           <Route exact path="/blog">
             <Blog/>
