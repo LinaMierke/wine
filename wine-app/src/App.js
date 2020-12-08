@@ -57,13 +57,14 @@ class App extends Component {
     .then((data)=> {
       this.setState({data: data})
     })
+    
     axios.get(url2)
     .then((res) => {
       return res
     })
     .then((reviews)=> {
       this.setState({
-        reviews: reviews
+        reviews: reviews.data
       })
     })
   }
@@ -87,12 +88,12 @@ class App extends Component {
 
           <Route exact path="/winelist">
             
-            <WineList wineList={this.state.data} renderParentCallback={this.rerenderParentCallback}/>
+            <WineList wineList={this.state.data} rerenderParentCallback={this.rerenderParentCallback}/>
           
           </Route>
 
           <Route exact path="/reviews">
-            <Reviews reviews={this.state.reviews}/>
+            <Reviews reviews={this.state.reviews} rerenderParentCallback={this.rerenderParentCallback}/>
           </Route>
           <Route exact path="/blog">
             <Blog/>

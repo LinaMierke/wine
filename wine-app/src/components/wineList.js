@@ -6,6 +6,9 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import wines from './wine7.png'
 import './wineList.css'
+import Button from '@material-ui/core/Button';
+import InputBase from '@material-ui/core/InputBase';
+
 
 
 
@@ -53,6 +56,9 @@ const useStyles = makeStyles((theme) => ({
 export default function WineList(props) {
   const classes = useStyles();
 
+  const [searchText, setText] = useState("")
+
+
   return (
     <React.Fragment>
       <CssBaseline />
@@ -64,16 +70,24 @@ export default function WineList(props) {
         <img className="wines" src={wines} alt="wineme" />
 
         <Container className={classes.cardGrid} maxWidth="md" >
+        <InputBase onChange={(e) => {
+                    console.log(e.target)
+                    setText(e.target.value)
+                  }} 
+        placeholder="Search…" style={{ border: '1px solid #112A3B', padding: '3px' }}>
+                    Search Review
+                  </InputBase>
           <Grid container spacing={5} >
-            {props.wineList.data.map((wines,index) => (
+            {props.wineList.data.filter(fCard => fCard.Type.includes(searchText)).map((wines,index) => (
 
               <Grid item key={index} xs={12} sm={6} md={4}>
               
                 <img src={wines.Image} className="bottles"/>
+                
                 <Typography gutterBottom variant="h5" component="h2" style={{textAlign:'center', fontWeight:'bold', fontFamily:'serif'}}>
                   {wines.Name}
                     </Typography>
-                <Typography>
+                <Typography >
                 Country: {wines.Country}
                     </Typography>
                     <Typography>
@@ -85,6 +99,12 @@ export default function WineList(props) {
                     <Typography>
                 Raiting: {wines.rating}
                     </Typography>
+
+                    <Button variant="contained" 
+                    color="primary" 
+                    style={{ backgroundColor: '#112A3B' }}>
+                    Review it
+                    </Button> 
 
               </Grid>
             ))}

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Button from '@material-ui/core/Button';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
@@ -9,7 +9,6 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import Link from '@material-ui/core/Link';
 import reviews from "./winereview.png"
 import Timeline from '@material-ui/lab/Timeline';
 import TimelineItem from '@material-ui/lab/TimelineItem';
@@ -22,22 +21,19 @@ import LaptopMacIcon from '@material-ui/icons/LaptopMac';
 import LocalBarIcon from '@material-ui/icons/LocalBar';
 import RepeatIcon from '@material-ui/icons/Repeat';
 import Paper from '@material-ui/core/Paper';
+import StarBorderIcon from '@material-ui/icons/StarBorder';
+import Rating from '@material-ui/lab/Rating';
+import Box from '@material-ui/core/Box'
 import "./reviews.css"
+import Form from "./form"
+import InputBase from '@material-ui/core/InputBase';
+import TextField from '@material-ui/core/TextField';
 
-// function Copyright() {
-//   return (
-//     <Typography variant="body2" color="textSecondary" align="center">
-//       {'Copyright © '}
-//       <Link color="inherit" href="https://material-ui.com/">
-//         Your Website
-//       </Link>{' '}
-//       {new Date().getFullYear()}
-//       {'.'}
-//     </Typography>
-//   );
-// }
+
+
 
 const useStyles = makeStyles((theme) => ({
+
   icon: {
     marginRight: theme.spacing(2),
   },
@@ -79,50 +75,62 @@ const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
 export default function Reviews(props) {
   const classes = useStyles();
+  const [create, setCreate] = useState(false);
+  const [searchText, setText] = useState("");
+  const [newScore, setNewScore] = useState("")
+
+
+  function handleDelete(id) {
+    // console.log(id)
+    fetch("https://wineoclock.herokuapp.com/reviews/delete/" + id, {
+      method: 'DELETE',
+      headers: { 'Content-Type': 'application/json' }
+
+    })
+      .then(res => res.text())
+      .then(res => {
+        console.log(res);
+        // props.rerendeParentCallback()
+      })
+  }
+  function handleChange(e) {
+    setNewScore(e.target.value)
+
+  }
+
+  function handleEdit(score) {
+    fetch("https://wineoclock.herokuapp.com/reviews/" + score, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        score: newScore
+      })
+
+    })
+      .then(res => res.text())
+      .then(res => console.log(res))
+
+
+  }
+
+
 
   return (
 
     <React.Fragment>
 
       <CssBaseline />
-      {console.log(props.reviews.data)}
+      {/*   
+      {console.log(props.rerenderParentCallBack)} */}
       <div>
         <img className="wines" src={reviews} alt="reviews" />
       </div>
-      {/* <AppBar position="relative" style={{backgroundColor: 'black'}}>
-        <Toolbar>
-          <CameraIcon className={classes.icon} />
-          <Typography variant="h6" color="inherit" noWrap>
-            Album layout
-          </Typography>
-        </Toolbar>
-      </AppBar> */}
+
       <main>
-        {/* Hero unit */}
+
         <div className={classes.heroContent}>
           <Container maxWidth="sm">
             <Timeline align="alternate">
-              {/* <TimelineItem> */}
-              {/* <TimelineOppositeContent>
-          <Typography variant="body2" color="textSecondary">
-            9:30 am
-          </Typography>
-        </TimelineOppositeContent> */}
-              {/* <TimelineSeparator>
-          <TimelineDot>
-            <FastfoodIcon />
-          </TimelineDot>
-          <TimelineConnector />
-        </TimelineSeparator> */}
-              {/* <TimelineContent>
-          <Paper elevation={3} className={classes.paper}>
-            <Typography variant="h6" component="h1">
-              Eat
-            </Typography>
-            <Typography>Because you need strength</Typography>
-          </Paper>
-        </TimelineContent> */}
-              {/* </TimelineItem> */}
               <TimelineItem>
                 <TimelineOppositeContent>
 
@@ -174,89 +182,107 @@ export default function Reviews(props) {
                 </TimelineContent>
               </TimelineItem>
             </Timeline>
-            {/* <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>
-              Album layout
-            </Typography>
-            <Typography variant="h5" align="center" color="textSecondary" paragraph>
-              Something short and leading about the collection below—its contents, the creator, etc.
-              Make it short and sweet, but not too short so folks don&apos;t simply skip over it
-              entirely.
-            </Typography> */}
+
             <div className={classes.heroButtons}>
               <Grid container spacing={2} justify="center">
                 <Grid item>
-                  <Button variant="contained" color="primary" style={{ backgroundColor: '#112A3B' }}>
-                    Main call to action
+                  <Button
+
+                    variant="contained"
+                    color="primary"
+                    style={{ backgroundColor: '#112A3B' }}
+                    onClick={() => create === false ? setCreate(true) : setCreate(false)}
+                  >
+                    Add Review
                   </Button>
                 </Grid>
                 <Grid item>
-                  <Button variant="outlined" color="primary" style={{ borderColor: '#112A3B', color: '#112A3B' }}>
-                    Secondary action
-                  </Button>
+                  <InputBase onChange={(e) => {
+                    console.log(e.target)
+                    setText(e.target.value)
+                  }} placeholder="Search…" style={{ border: '1px solid #112A3B', padding: '3px' }}>
+                    Search Review
+                  </InputBase>
                 </Grid>
               </Grid>
             </div>
           </Container>
         </div>
-        <Container className={classes.cardGrid} maxWidth="md">
-          {/* End hero unit */}
-          <Grid container spacing={4}>
-            {props.reviews.data.map((reviews, index) => (
-              <Grid item key={index} xs={12} sm={6} md={4}>
-                <Card className={classes.card}>
-                <img src={reviews.picture} className="picture"/>
-                  <CardMedia
-                 
 
-                    className={classes.cardMedia}
-                  // image="https://source.unsplash.com/random"
-                  // title="Image title"
-                  />
-                  <CardContent className={classes.cardContent}>
-                    <Typography gutterBottom variant="h5" component="h2">
-                      {reviews.name}
-                    </Typography>
-                    <Typography>
-                      {reviews.country}                    
-                      </Typography>
-                      <Typography>
-                      {reviews.review}                    
-                      </Typography>
-                      <Typography>
-                      {reviews.paring}                    
-                      </Typography>
-                      <Typography>
-                      {reviews.type}                    
-                      </Typography>
-                      <Typography>
-                      {reviews.score}                    
-                      </Typography>
-                  </CardContent>
-                  <CardActions>
-                    <Button size="small" color="primary">
-                      View
+        {
+          create === true
+            ?
+            <Form info={props.reviews.data} rerender={props.rerendeParentCallback} />
+            :
+
+            <Container className={classes.cardGrid} maxWidth="md">
+
+              <Grid container spacing={4}>
+                {props.reviews.data.filter(fCard => fCard.type.includes(searchText)).map((reviews, index) => (
+                  <Grid item key={index} xs={12} sm={6} md={4}>
+                    <Card className={classes.card}>
+                      <Box component="fieldset" mb={3} borderColor="transparent">
+                        <Typography component="legend">Read only</Typography>
+                        <Rating name="read-only" precision={0.1} value={reviews.score} readOnly />
+                      </Box>
+                      <img src={reviews.picture} className="picture" />
+                      <CardMedia
+
+
+                        className={classes.cardMedia}
+
+                      />
+                      <CardContent className={classes.cardContent}>
+                        <Typography gutterBottom variant="h5" component="h2">
+                          {reviews.name}
+                        </Typography>
+                        {/* <Typography>
+                          {reviews.country}
+                        </Typography> */}
+                        <Typography>
+                          <h3> Review: </h3>
+                          {reviews.review}
+                        </Typography>
+                        <Typography>
+                          <h3> Paring: </h3>
+                          {reviews.paring}
+                        </Typography>
+                        <Typography>
+                          <h3> Type: </h3>
+                          {reviews.type}
+                        </Typography>
+                        <Typography>
+                          <h3> Score: </h3>
+                          {reviews.score}
+                        </Typography>
+                      </CardContent>
+                      <CardActions>
+                        <Button size="small" color="primary">
+                          View
                     </Button>
-                    <Button size="small" color="primary">
-                      Edit
+                        <TextField placeholder={reviews.score} onChange={handleChange} />
+
+                        <Button onClick={() => {
+                          handleEdit(reviews.score)
+                        }}
+                          size="small" color="primary">
+                          Edit
                     </Button>
-                  </CardActions>
-                </Card>
+                        <Button onClick={() => {
+                          // console.log(reviews.id)
+                          handleDelete(reviews._id)
+                        }} size="small" color="primary">
+                          Delete
+                    </Button>
+                      </CardActions>
+                    </Card>
+                  </Grid>
+                ))}
               </Grid>
-            ))}
-          </Grid>
-        </Container>
+            </Container>
+        }
       </main>
-      {/* Footer */}
-      {/* <footer className={classes.footer}>
-        <Typography variant="h6" align="center" gutterBottom>
-          Footer
-        </Typography>
-        <Typography variant="subtitle1" align="center" color="textSecondary" component="p">
-          Something here to give the footer a purpose!
-        </Typography>
-        <Copyright />
-      </footer> */}
-      {/* End footer */}
+
     </React.Fragment>
   );
 }
