@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import './App.css';
 import SearchBar from "./components/searchbar"
@@ -11,117 +11,127 @@ import Reviews from "./components/reviews"
 import Blog from "./components/blog"
 
 
-class App extends Component {
-  constructor() {
-    super()
-    this.rerenderParentCallback = this.rerenderParentCallback.bind(this)
-    this.state = {
-      wines:"",
-      isLoading:true,
-      reviews:"",
-      
+export default function App() {
 
-    }
-  }
-  componentDidMount() {
-    // console.log('mounted')
+  const [wines, setWines]= useState([])
+  const [reviews, setReviews]= useState([])
 
+  useEffect(() => {
     let url = "https://wineoclock.herokuapp.com/wine"
-    let url2="https://wineoclock.herokuapp.com/reviews"
-
     axios.get(url)
-    .then((res) => {
-      return res
-    })
-    .then((data)=> {
-      this.setState({
-        data: data
+      .then((res) => {
+        return res
       })
-    })
+      .then((data) => {
+        setWines(data)
+      })
+  },[])
+
+  useEffect (()=> {
+    let url2 = "https://wineoclock.herokuapp.com/reviews"
     axios.get(url2)
-    .then((res) => {
-      return res
-    })
-    .then((reviews)=> {
-      this.setState({
-        reviews: reviews
+      .then((res) => {
+        return res
       })
-    })
-  }
-  rerenderParentCallback(){
-    console.log('updatedState')
-    let url = "https://wineoclock.herokuapp.com/wine"
-    let url2="https://wineoclock.herokuapp.com/reviews"
-
-    axios.get(url)
-    .then((res)=> {
-      return res
-    })
-    .then((data)=> {
-      this.setState({data: data})
-    })
-    
-    axios.get(url2)
-    .then((res) => {
-      return res
-    })
-    .then((reviews)=> {
-      this.setState({
-        reviews: reviews
+      .then((reviews) => {
+        setReviews(reviews)
       })
-    })
-  }
+  },[reviews])
+  // console.log('mounted')
 
-  render() {
-    // console.log(this.state.data)
-    // console.log(this.state.reviews)
-    
 
-    return (
+
+
+  return (
+    <div>
+
+      <SearchBar />
       <div>
 
-        <SearchBar />
-        <div>
-
-        </div>
-        <Switch>
-          <Route exact path="/home">  
+      </div>
+      <Switch>
+        <Route exact path="/home">
           <img className="wineme" src={wineme} alt="wineme" />
-          </Route>
+        </Route>
 
-          <Route exact path="/winelist">
-            
-            <WineList wineList={this.state.data} rerenderParentCallback={this.rerenderParentCallback}/>
-          
-          </Route>
+        <Route exact path="/winelist">
 
-          <Route exact path="/reviews">
-            <Reviews reviews={this.state.reviews} rerenderParentCallback={this.rerenderParentCallback}/>
-          </Route>
-          <Route exact path="/blog">
-            <Blog/>
-          </Route>
+          <WineList wineList={wines}  />
 
-        </Switch>
+        </Route>
 
+        <Route exact path="/reviews">
+          <Reviews reviews={reviews}  />
+        </Route>
+        <Route exact path="/blog">
+          <Blog />
+        </Route>
 
-        <div>
-
-        </div>
+      </Switch>
 
 
-        <AppFooter />
-
-
-
+      <div>
 
       </div>
 
 
+      <AppFooter />
 
 
-    );
-  }
+
+
+    </div>
+
+
+
+
+  );
 }
 
-export default App;
+// class App extends Component {
+//   constructor() {
+//     super()
+//     this.rerenderParentCallback = this.rerenderParentCallback.bind(this)
+//     this.state = {
+//       wines:"",
+//       isLoading:true,
+//       reviews:"",
+
+
+//     }
+//   }
+
+  // rerenderParentCallback(){
+  //   console.log('updatedState')
+  //   let url = "https://wineoclock.herokuapp.com/wine"
+  //   let url2="https://wineoclock.herokuapp.com/reviews"
+
+  //   axios.get(url)
+  //   .then((res)=> {
+  //     return res
+  //   })
+  //   .then((data)=> {
+  //     this.setState({data: data})
+  //   })
+
+  //   axios.get(url2)
+  //   .then((res) => {
+  //     return res
+  //   })
+  //   .then((reviews)=> {
+  //     this.setState({
+  //       reviews: reviews
+  //     })
+  //   })
+  // }
+
+  // render() {
+    // console.log(this.state.data)
+    // console.log(this.state.reviews)
+
+
+
+  // }
+// }
+
+

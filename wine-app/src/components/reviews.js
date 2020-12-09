@@ -28,6 +28,7 @@ import "./reviews.css"
 import Form from "./form"
 import InputBase from '@material-ui/core/InputBase';
 import TextField from '@material-ui/core/TextField';
+import { CenterFocusStrong } from '@material-ui/icons';
 
 
 
@@ -61,7 +62,12 @@ const useStyles = makeStyles((theme) => ({
     paddingTop: '5%', // 16:9
   },
   cardContent: {
-    flexGrow: 1,
+    // flexGrow: 1,
+    // flexFlow: 'column',
+    textAlign: 'center',
+    // alignItems: 'center',
+    // position:'relative',
+    // float: 'right',
   },
   footer: {
     backgroundColor: theme.palette.background.paper,
@@ -94,7 +100,7 @@ export default function Reviews(props) {
       .then(res => res.text())
       .then(res => {
         console.log(res);
-        props.rerenderParentCallback()
+        // props.rerenderParentCallback()
       })
   }
   function handleChange(e) {
@@ -115,7 +121,7 @@ export default function Reviews(props) {
     })
       .then(res => res.text())
       .then(res => console.log(res));
-      props.rerenderParentCallback()
+      // props.rerenderParentCallback()
 
 
   }
@@ -224,21 +230,18 @@ export default function Reviews(props) {
 
             <Container className={classes.cardGrid} maxWidth="md">
 
-              <Grid container spacing={4}>
+              <Grid container spacing={4} className="grid">
                 {props.reviews.data.filter(fCard => fCard.type.includes(searchText)).map((reviews, index) => (
-                  <Grid item key={index} xs={12} sm={6} md={4}>
+                  <Grid item key={index} xs={2} sm={6} md={4}>
                     <Card className={classes.card} >
                       <Box component="fieldset" mb={3} borderColor="transparent">
-                        <Typography component="legend">Read only</Typography>
                         <Rating name="read-only" precision={0.1} value={reviews.score} readOnly />
                       </Box>
+                      
                       <img src={reviews.picture} className="picture" />
-                      <CardMedia
+                      <CardMedia className={classes.cardMedia}
 
-
-                        className={classes.cardMedia}
-
-                      />
+/>
                       <CardContent className={classes.cardContent}>
                         <Typography gutterBottom variant="h5" >
                           {reviews.name}

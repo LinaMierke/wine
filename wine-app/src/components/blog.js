@@ -73,10 +73,6 @@ export default function WineList() {
 
       <img className= "wines" src={wines} alt="wineme" />
         
-        
-            
-        
-        
         <Container className={classes.cardGrid} maxWidth="md">
           <Avatar />
           
