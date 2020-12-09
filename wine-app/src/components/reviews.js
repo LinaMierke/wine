@@ -39,7 +39,7 @@ const useStyles = makeStyles((theme) => ({
   },
   heroContent: {
     backgroundColor: theme.palette.background.paper,
-    padding: theme.spacing(8, 0, 6),
+    padding: theme.spacing(2, 0, 2),
   },
   heroButtons: {
     marginTop: theme.spacing(4),
@@ -48,13 +48,17 @@ const useStyles = makeStyles((theme) => ({
     paddingTop: theme.spacing(8),
     paddingBottom: theme.spacing(8),
   },
+  cover: {
+    width: 151,
+  },
   card: {
     height: '100%',
+    width: '100%',
     display: 'flex',
-    flexDirection: 'column',
+    flexDirection: "column",
   },
   cardMedia: {
-    paddingTop: '56.25%', // 16:9
+    paddingTop: '5%', // 16:9
   },
   cardContent: {
     flexGrow: 1,
@@ -64,7 +68,7 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(6),
   },
   paper: {
-    padding: '6px 16px',
+    padding: '6px 10px',
   },
   secondaryTail: {
     backgroundColor: theme.palette.secondary.main,
@@ -90,7 +94,7 @@ export default function Reviews(props) {
       .then(res => res.text())
       .then(res => {
         console.log(res);
-        // props.rerendeParentCallback()
+        props.rerenderParentCallback()
       })
   }
   function handleChange(e) {
@@ -99,7 +103,9 @@ export default function Reviews(props) {
   }
 
   function handleEdit(score) {
-    fetch("https://wineoclock.herokuapp.com/reviews/" + score, {
+    console.log(score)
+    fetch("https://wineoclock.herokuapp.com/reviews/reviews/" + score, {
+
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -108,7 +114,8 @@ export default function Reviews(props) {
 
     })
       .then(res => res.text())
-      .then(res => console.log(res))
+      .then(res => console.log(res));
+      props.rerenderParentCallback()
 
 
   }
@@ -200,7 +207,7 @@ export default function Reviews(props) {
                   <InputBase onChange={(e) => {
                     console.log(e.target)
                     setText(e.target.value)
-                  }} placeholder="Search…" style={{ border: '1px solid #112A3B', padding: '3px' }}>
+                  }} placeholder="Search…" style={{ border: '1px solid #112A3B', padding: '3px', borderRadius: '10px' }}>
                     Search Review
                   </InputBase>
                 </Grid>
@@ -220,7 +227,7 @@ export default function Reviews(props) {
               <Grid container spacing={4}>
                 {props.reviews.data.filter(fCard => fCard.type.includes(searchText)).map((reviews, index) => (
                   <Grid item key={index} xs={12} sm={6} md={4}>
-                    <Card className={classes.card}>
+                    <Card className={classes.card} >
                       <Box component="fieldset" mb={3} borderColor="transparent">
                         <Typography component="legend">Read only</Typography>
                         <Rating name="read-only" precision={0.1} value={reviews.score} readOnly />
@@ -233,26 +240,26 @@ export default function Reviews(props) {
 
                       />
                       <CardContent className={classes.cardContent}>
-                        <Typography gutterBottom variant="h5" component="h2">
+                        <Typography gutterBottom variant="h5" >
                           {reviews.name}
                         </Typography>
                         {/* <Typography>
                           {reviews.country}
                         </Typography> */}
                         <Typography>
-                          <h3> Review: </h3>
+                          Review : 
                           {reviews.review}
                         </Typography>
                         <Typography>
-                          <h3> Paring: </h3>
+                        <div> Paring :</div>
                           {reviews.paring}
                         </Typography>
                         <Typography>
-                          <h3> Type: </h3>
+                          Type :
                           {reviews.type}
                         </Typography>
                         <Typography>
-                          <h3> Score: </h3>
+                         Score :
                           {reviews.score}
                         </Typography>
                       </CardContent>

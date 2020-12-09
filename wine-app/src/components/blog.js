@@ -15,23 +15,11 @@ import Container from '@material-ui/core/Container';
 import Link from '@material-ui/core/Link';
 import wines from './blogpic.png'
 import './wineList.css'
-import poppy from './poppy.png'
+import Avatar from './avatar.js'
 
 
 
 
-function Copyright() {
-  return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      {'Copyright © '}
-      <Link color="inherit" href="https://material-ui.com/">
-        Your Website
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
 
 const useStyles = makeStyles((theme) => ({
   icon: {
@@ -90,7 +78,7 @@ export default function WineList() {
         
         
         <Container className={classes.cardGrid} maxWidth="md">
-          
+          <Avatar />
           
         </Container>
       </main>

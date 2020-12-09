@@ -73,7 +73,9 @@ export default function Form(props) {
     })
       .then(res => res.json())
       .then((res) => {console.log(res);
+       
         alert("success");
+//  props.rerenderParentCallback()
       // props.rerenderParentCallback()
       })
   }
@@ -150,13 +152,13 @@ export default function Form(props) {
           className={classes.button}>
           Submit
       </Button>
-      <Link to="/winelist"> 
+      <Link to="/home"> 
       <Button 
           variant="contained"
           color="primary"
           style={{ backgroundColor: '#112A3B' }}
           className={classes.button2}>
-          WineList?
+          Back
       </Button> 
       </Link>
       

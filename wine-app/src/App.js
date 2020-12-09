@@ -14,8 +14,11 @@ import Blog from "./components/blog"
 class App extends Component {
   constructor() {
     super()
+    this.rerenderParentCallback = this.rerenderParentCallback.bind(this)
     this.state = {
       wines:"",
+      isLoading:true,
+      reviews:"",
       
 
     }
@@ -64,7 +67,7 @@ class App extends Component {
     })
     .then((reviews)=> {
       this.setState({
-        reviews: reviews.data
+        reviews: reviews
       })
     })
   }

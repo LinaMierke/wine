@@ -8,6 +8,9 @@ import wines from './wine7.png'
 import './wineList.css'
 import Button from '@material-ui/core/Button';
 import InputBase from '@material-ui/core/InputBase';
+import { Link } from 'react-router-dom'
+import SearchIcon from '@material-ui/icons/Search';
+
 
 
 
@@ -51,7 +54,7 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(6),
   },
 }));
- 
+
 
 export default function WineList(props) {
   const classes = useStyles();
@@ -64,48 +67,52 @@ export default function WineList(props) {
       <CssBaseline />
 
       <main >
-
-        
-
         <img className="wines" src={wines} alt="wineme" />
-
-        <Container className={classes.cardGrid} maxWidth="md" >
+        <div> 
+       
         <InputBase onChange={(e) => {
-                    console.log(e.target)
-                    setText(e.target.value)
-                  }} 
-        placeholder="Search…" style={{ border: '1px solid #112A3B', padding: '3px' }}>
-                    Search Review
-                  </InputBase>
+            console.log(e.target)
+            setText(e.target.value)
+          }}
+          variant="contained"
+            placeholder="Search…" style={{ border: '0.5px ridge #112A3B', borderRadius: '10px', padding: '3px' , marginLeft: '20px'}}>
+            Search Review
+          </InputBase>
+
+           {/* <SearchIcon/>  */}
+          </div>
+        
+        <Container className={classes.cardGrid} maxWidth="md" >
+          
           <Grid container spacing={5} >
-            {props.wineList.data.filter(fCard => fCard.Type.includes(searchText)).map((wines,index) => (
+            {props.wineList.data.filter(fCard => fCard.Type.includes(searchText)).map((wines, index) => (
 
               <Grid item key={index} xs={12} sm={6} md={4}>
-              
-                <img src={wines.Image} className="bottles"/>
-                
-                <Typography gutterBottom variant="h5" component="h2" style={{textAlign:'center', fontWeight:'bold', fontFamily:'serif'}}>
+
+                <img src={wines.Image} className="bottles" />
+
+                <Typography gutterBottom variant="h5" component="h2" style={{ textAlign: 'center', fontWeight: 'bold', fontFamily: 'serif' }}>
                   {wines.Name}
-                    </Typography>
+                </Typography>
                 <Typography >
-                Country: {wines.Country}
-                    </Typography>
-                    <Typography>
-                Vintage: {wines.vintage}
-                    </Typography>
-                    <Typography>
-                Type: {wines.Type}
-                    </Typography>
-                    <Typography>
-                Raiting: {wines.rating}
-                    </Typography>
-
-                    <Button variant="contained" 
-                    color="primary" 
-                    style={{ backgroundColor: '#112A3B' }}>
+                  Country: {wines.Country}
+                </Typography>
+                <Typography>
+                  Vintage: {wines.vintage}
+                </Typography>
+                <Typography>
+                  Type: {wines.Type}
+                </Typography>
+                <Typography>
+                  Raiting: {wines.rating}
+                </Typography>
+                <Link to="/reviews" style= {{textDecoration: 'none'}}>
+                  <Button variant="contained"
+                    color="primary"
+                    style={{ textAlign:'center', align:'center',height: '22px',backgroundColor: 'white', borderRadius: '10px', color:'#112A3B' }}>
                     Review it
-                    </Button> 
-
+                    </Button>
+                </Link>
               </Grid>
             ))}
           </Grid>
