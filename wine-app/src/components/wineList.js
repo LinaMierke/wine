@@ -63,7 +63,7 @@ export default function WineList(props) {
 
 
   return (
-    <React.Fragment>
+    <div>
       <CssBaseline />
 
       <main >
@@ -119,6 +119,6 @@ export default function WineList(props) {
         </Container>
       </main>
 
-    </React.Fragment>
+    </div>
   );
 }

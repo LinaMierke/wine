@@ -72,9 +72,10 @@ export default function Form(props) {
       })
     })
       .then(res => res.json())
-      .then((res) => {console.log(res);
-       
-        alert("success");
+      .then((res) => {
+        console.log(res);
+        props.created()
+        // alert("success");
 //  props.rerenderParentCallback()
       // props.rerenderParentCallback()
       })
@@ -82,7 +83,7 @@ export default function Form(props) {
 
   return (
     <div>
-      {/* {console.log(props)} */}
+     
       <form className={classes.root} noValidate autoComplete="off">
         <div>
         
@@ -152,17 +153,6 @@ export default function Form(props) {
           className={classes.button}>
           Submit
       </Button>
-      <Link to="/home"> 
-      <Button 
-          variant="contained"
-          color="primary"
-          style={{ backgroundColor: '#112A3B' }}
-          className={classes.button2}>
-          Back
-      </Button> 
-      </Link>
-      
-
       </form>
     </div>
   );

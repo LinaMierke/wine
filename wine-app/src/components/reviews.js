@@ -21,14 +21,11 @@ import LaptopMacIcon from '@material-ui/icons/LaptopMac';
 import LocalBarIcon from '@material-ui/icons/LocalBar';
 import RepeatIcon from '@material-ui/icons/Repeat';
 import Paper from '@material-ui/core/Paper';
-import StarBorderIcon from '@material-ui/icons/StarBorder';
 import Rating from '@material-ui/lab/Rating';
 import Box from '@material-ui/core/Box'
-import "./reviews.css"
 import Form from "./form"
 import InputBase from '@material-ui/core/InputBase';
 import TextField from '@material-ui/core/TextField';
-import { CenterFocusStrong } from '@material-ui/icons';
 
 
 
@@ -56,16 +53,19 @@ const useStyles = makeStyles((theme) => ({
     height: '100%',
     width: '100%',
     display: 'flex',
-    flexDirection: "column",
+    // flexDirection: "column",
   },
   cardMedia: {
-    paddingTop: '5%', // 16:9
+    height: '300px',
+    width: '300px',
+    // background: 'pink'
+    // paddingTop: '5%', // 16:9
   },
   cardContent: {
     // flexGrow: 1,
     // flexFlow: 'column',
-    textAlign: 'center',
-    // alignItems: 'center',
+    // textAlign: 'center',
+    alignItems: 'center',
     // position:'relative',
     // float: 'right',
   },
@@ -81,7 +81,6 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
 export default function Reviews(props) {
   const classes = useStyles();
@@ -130,7 +129,7 @@ export default function Reviews(props) {
 
   return (
 
-    <React.Fragment>
+    <div>
 
       <CssBaseline />
       {/*   
@@ -149,15 +148,16 @@ export default function Reviews(props) {
 
                 </TimelineOppositeContent>
                 <TimelineSeparator>
-                  <TimelineDot color="black">
+                  <TimelineDot color="primary">
                     <LocalBarIcon />
                   </TimelineDot>
                   <TimelineConnector />
                 </TimelineSeparator>
                 <TimelineContent>
                   <Paper elevation={3} className={classes.paper}>
-                    <Typography variant="h6" component="h1">
+                    <Typography variant="h6" >
                       Drink
+                    
             </Typography>
                     <Typography>Because it&apos;s awesome!</Typography>
                   </Paper>
@@ -165,14 +165,14 @@ export default function Reviews(props) {
               </TimelineItem>
               <TimelineItem>
                 <TimelineSeparator>
-                  <TimelineDot color="" variant="outlined">
-                    <LaptopMacIcon color="black" />
+                  <TimelineDot color="grey" variant="outlined">
+                    <LaptopMacIcon color="primary" />
                   </TimelineDot>
                   <TimelineConnector className={classes.secondaryTail} />
                 </TimelineSeparator>
                 <TimelineContent>
                   <Paper elevation={3} className={classes.paper}>
-                    <Typography variant="h6" component="h1">
+                    <Typography variant="h6" >
                       Review
             </Typography>
                     <Typography>Because you love us!</Typography>
@@ -180,14 +180,14 @@ export default function Reviews(props) {
                 </TimelineContent>
               </TimelineItem>
               <TimelineItem >
-                <TimelineSeparator color="black">
-                  <TimelineDot color="black">
+                <TimelineSeparator color="grey">
+                  <TimelineDot color="grey">
                     <RepeatIcon />
                   </TimelineDot>
                 </TimelineSeparator>
                 <TimelineContent>
                   <Paper elevation={3} className={classes.paper}>
-                    <Typography variant="h6" component="h1">
+                    <Typography variant="h6" >
                       Repeat
             </Typography>
                     <Typography>Because why not?!</Typography>
@@ -206,12 +206,12 @@ export default function Reviews(props) {
                     style={{ backgroundColor: '#112A3B' }}
                     onClick={() => create === false ? setCreate(true) : setCreate(false)}
                   >
-                    Add Review
+                    {create === false ? "Add Review" : "Reviews"}
                   </Button>
                 </Grid>
                 <Grid item>
                   <InputBase onChange={(e) => {
-                    console.log(e.target)
+                    // console.log(e.target)
                     setText(e.target.value)
                   }} placeholder="Search…" style={{ border: '1px solid #112A3B', padding: '3px', borderRadius: '10px' }}>
                     Search Review
@@ -225,23 +225,21 @@ export default function Reviews(props) {
         {
           create === true
             ?
-            <Form info={props.reviews.data} rerender={props.rerendeParentCallback} />
+            <Form created={()=>setCreate(false)} />
             :
 
             <Container className={classes.cardGrid} maxWidth="md">
 
               <Grid container spacing={4} className="grid">
                 {props.reviews.data.filter(fCard => fCard.type.includes(searchText)).map((reviews, index) => (
-                  <Grid item key={index} xs={2} sm={6} md={4}>
+                  <Grid item key={index} xs={12} sm={12} md={12}>
                     <Card className={classes.card} >
                       <Box component="fieldset" mb={3} borderColor="transparent">
                         <Rating name="read-only" precision={0.1} value={reviews.score} readOnly />
                       </Box>
                       
-                      <img src={reviews.picture} className="picture" />
-                      <CardMedia className={classes.cardMedia}
-
-/>
+                   
+                      <CardMedia className={classes.cardMedia} image={reviews.picture}/>
                       <CardContent className={classes.cardContent}>
                         <Typography gutterBottom variant="h5" >
                           {reviews.name}
@@ -254,7 +252,7 @@ export default function Reviews(props) {
                           {reviews.review}
                         </Typography>
                         <Typography>
-                        <div> Paring :</div>
+                         Paring :
                           {reviews.paring}
                         </Typography>
                         <Typography>
@@ -270,7 +268,7 @@ export default function Reviews(props) {
                         <Button size="small" color="primary">
                           View
                     </Button>
-                        <TextField placeholder={reviews.score} onChange={handleChange} />
+                        <TextField placeholder={reviews.score.toString()} onChange={handleChange} />
 
                         <Button onClick={() => {
                           handleEdit(reviews.score)
@@ -293,6 +291,6 @@ export default function Reviews(props) {
         }
       </main>
 
-    </React.Fragment>
+    </div>
   );
 }

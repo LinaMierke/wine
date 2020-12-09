@@ -66,7 +66,7 @@ export default function WineList() {
   const classes = useStyles();
 
   return (
-    <React.Fragment>
+    <div>
       <CssBaseline />
 
       <main >
@@ -81,6 +81,6 @@ export default function WineList() {
       
     
       
-    </React.Fragment>
+    </div>
   );
 }
