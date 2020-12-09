@@ -265,9 +265,7 @@ export default function Reviews(props) {
                         </Typography>
                       </CardContent>
                       <CardActions>
-                        <Button size="small" color="primary">
-                          View
-                    </Button>
+                       
                         <TextField placeholder={reviews.score.toString()} onChange={handleChange} />
 
                         <Button onClick={() => {

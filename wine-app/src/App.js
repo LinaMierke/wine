@@ -2,9 +2,7 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import './App.css';
 import SearchBar from "./components/searchbar"
-// import CustomizedTimeline from "./components/body"
 import wineme from "./wineme.png"
-// import AppFooter from "./components/footer"
 import WineList from './components/wineList'
 import { Route, Switch } from 'react-router-dom';
 import Reviews from "./components/reviews"
@@ -40,7 +38,6 @@ export default function App() {
     }
     if (reviews) updateReviews();
   }, [reviews])
-  // console.log('mounted')
 
 
 
@@ -78,7 +75,6 @@ export default function App() {
       </div>
 
 
-      {/* <AppFooter /> */}
 
 
 
