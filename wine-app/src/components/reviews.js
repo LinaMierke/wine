@@ -26,7 +26,7 @@ import Box from '@material-ui/core/Box'
 import Form from "./form"
 import InputBase from '@material-ui/core/InputBase';
 import TextField from '@material-ui/core/TextField';
-
+import "./reviews.css"
 
 
 
@@ -52,8 +52,7 @@ const useStyles = makeStyles((theme) => ({
   card: {
     height: '100%',
     width: '100%',
-    // display: 'flex',
-    // flexDirection: "column",
+    
   },
   cardMedia: {
     height: '300px',
@@ -63,16 +62,15 @@ const useStyles = makeStyles((theme) => ({
     display: 'block',
     marginLeft: 'auto',
     marginRight: 'auto',
-    // background: 'pink'
-    // paddingTop: '5%', // 16:9
+    
   },
+  
   cardContent: {
-    // flexGrow: 1,
-    // flexFlow: 'column',
+   
     textAlign: 'center',
     alignItems: 'center',
-    // position:'relative',
-    // float: 'right',
+
+   
   },
   footer: {
     backgroundColor: theme.palette.background.paper,
@@ -95,7 +93,7 @@ export default function Reviews(props) {
 
 
   function handleDelete(id) {
-    // console.log(id)
+   
     fetch("https://wineoclock.herokuapp.com/reviews/delete/" + id, {
       method: 'DELETE',
       headers: { 'Content-Type': 'application/json' }
@@ -104,7 +102,7 @@ export default function Reviews(props) {
       .then(res => res.text())
       .then(res => {
         console.log(res);
-        // props.rerenderParentCallback()
+        
       })
   }
   function handleChange(e) {
@@ -125,9 +123,7 @@ export default function Reviews(props) {
     })
       .then(res => res.text())
       .then(res => console.log(res));
-      // props.rerenderParentCallback()
-
-
+    
   }
 
 
@@ -241,32 +237,30 @@ export default function Reviews(props) {
                   <Grid item key={index} xs={12} sm={12} md={6}>
                     <Card className={classes.card} >
                       <Box component="fieldset" mb={1} borderColor="transparent">
-                        <Rating name="read-only" precision={0.1} value={reviews.score} readOnly />
                       </Box>
                       
                    
                       <CardMedia className={classes.cardMedia} image={reviews.picture}/>
-                      <CardContent className={classes.cardContent}>
-                        <Typography gutterBottom variant="h5" >
+                      <Rating name="read-only" precision={0.1} value={reviews.score} readOnly />
+
+                      <CardContent >
+                        <Typography variant="h5" className={classes.cardContent}>
                           {reviews.name}
                         </Typography>
-                        {/* <Typography>
-                          {reviews.country}
-                        </Typography> */}
-                        <Typography>
-                          Review : 
+                       <div className="names"> Review:</div>
+                        <Typography >
                           {reviews.review}
                         </Typography>
+                        <div className="names"> Paring:</div>
                         <Typography>
-                         Paring :
                           {reviews.paring}
                         </Typography>
+                        <div className="names">Type:</div>
                         <Typography>
-                          Type :
                           {reviews.type}
                         </Typography>
+                        <div className="names"> Score:</div>
                         <Typography>
-                         Score :
                           {reviews.score}
                         </Typography>
                       </CardContent>

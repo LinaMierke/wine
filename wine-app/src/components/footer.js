@@ -1,44 +1,8 @@
 import React from 'react';
 import "./footer.css"
 
-// function Copyright() {
-//   return (
-//     <Typography variant="body2" color="primary">
-//       {'Copyright © '}
-//       <Link color="inherit" >
-//         Wine O'Clock
-//       </Link>{' '}
-//       {new Date().getFullYear()}
-//       {'.'}
-//     </Typography>
-//   );
-// }
 
-// const useStyles = makeStyles((theme) => ({
-  // root: {
-  //   marginTop: "0px",
-  //   display: 'flex',
-  //   flexDirection: 'column',
-  //   backgroundColor: 'black'
 
-  //   // minHeight: '100vh',
-  // },
-  // main: {
-  //   // marginTop: theme.spacing(2),
-  //   // marginBottom: theme.spacing(2),
-  //   backgroundColor: 'black',
-  //   marginTop: "0px",
-  // },
-  // footer: {
-  //   padding: theme.spacing(16, 2),
-  //   marginTop: '0px',
-  //   backgroundColor: 'black',
-  //   color: 'white',
-  //   flexDirection: 'column',
-  //   display: 'flex'
-
-  // },
-// }));
 
 export default function Footer() {
 

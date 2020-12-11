@@ -19,16 +19,16 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const sections = [
-  { title: 'Technology', url: '#' },
-  { title: 'Design', url: '#' },
-  { title: 'Culture', url: '#' },
-  { title: 'Business', url: '#' },
-  { title: 'Politics', url: '#' },
-  { title: 'Opinion', url: '#' },
-  { title: 'Science', url: '#' },
-  { title: 'Health', url: '#' },
-  { title: 'Style', url: '#' },
-  { title: 'Travel', url: '#' },
+  { title: 'Wineries', url: '#' },
+  { title: 'Paring', url: '#' },
+  { title: 'Restaurants', url: '#' },
+  { title: 'Whites', url: '#' },
+  { title: 'Reds', url: '#' },
+  { title: 'Rosé', url: '#' },
+  { title: 'Bubbles', url: '#' },
+  // { title: 'Health', url: '#' },
+  // { title: 'Style', url: '#' },
+  // { title: 'Travel', url: '#' },
 ];
 
 const mainFeaturedPost = {
@@ -72,7 +72,7 @@ const sidebar = {
     { title: 'November 1999', url: '#' },
     { title: 'October 1999', url: '#' },
     { title: 'September 1999', url: '#' },
-    
+
   ],
   social: [
     { name: 'GitHub', icon: GitHubIcon },
@@ -86,26 +86,15 @@ export default function Blog() {
 
   return (
     <div>
-       <CssBaseline />
+      <CssBaseline />
       <Container maxWidth="lg">
         <Header title="Blog" sections={sections} />
         <main>
           <MainFeaturedPost post={mainFeaturedPost} />
 
-          
-          {/* <Grid container spacing={4}>
-            {featuredPosts.map((post) => (
-              <FeaturedPost key={post.title} post={post} />
-            ))}
-            
-          </Grid> */}
           <Grid container spacing={5} className={classes.mainGrid}>
-            <Main 
-
-            /> 
-
-            
-            
+            <Main
+            />
             <Sidebar
               title={sidebar.title}
               description={sidebar.description}
@@ -121,83 +110,9 @@ export default function Blog() {
 
 
 
-// import React from 'react';
-// // import AppBar from '@material-ui/core/AppBar';
-// // import CameraIcon from '@material-ui/icons/PhotoCamera';
-
-// import CssBaseline from '@material-ui/core/CssBaseline';
-// // import Toolbar from '@material-ui/core/Toolbar';
-// import { makeStyles } from '@material-ui/core/styles';
-// import Container from '@material-ui/core/Container';
-// import Link from '@material-ui/core/Link';
-// import wines from './blogpic.png'
-// import './wineList.css'
-// import Avatar from './avatar.js'
 
 
 
 
 
-// const useStyles = makeStyles((theme) => ({
-//   icon: {
-//     marginRight: theme.spacing(2),
-//   },
-//   heroContent: {
-//     backgroundColor: theme.palette.background.paper,
-//     padding: theme.spacing(8, 0, 6),
-//   },
-//   heroButtons: {
-//     marginTop: theme.spacing(4),
-//   },
-//   cardGrid: {
-//     paddingTop: theme.spacing(8),
-//     paddingBottom: theme.spacing(8),
-   
-    
-//   },
-//   card: {
-   
-//     display: 'flex',
-//     flexDirection: 'column',
-   
 
-    
-//   },
-//   cardMedia: {
-//     paddingTop: '56.25%', // 16:9
-    
-   
-//   },
-//   cardContent: {
-//     flexGrow: 1,
-//   },
-//   footer: {
-//     backgroundColor: theme.palette.background.paper,
-//     padding: theme.spacing(6),
-//   },
-// }));
-
-// const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-
-// export default function WineList() {
-//   const classes = useStyles();
-
-//   return (
-//     <div>
-//       <CssBaseline />
-
-//       <main >
-
-//       <img className= "wines" src={wines} alt="wineme" />
-        
-//         <Container className={classes.cardGrid} maxWidth="md">
-//           <Avatar />
-//           <p> hello</p>
-//         </Container>
-//       </main>
-      
-    
-      
-//     </div>
-//   );
-// }

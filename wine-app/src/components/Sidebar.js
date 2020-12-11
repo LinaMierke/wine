@@ -58,9 +58,3 @@ export default function Sidebar(props) {
   );
 }
 
-// Sidebar.propTypes = {
-//   archives: PropTypes.array,
-//   description: PropTypes.string,
-//   social: PropTypes.array,
-//   title: PropTypes.string,
-// };
