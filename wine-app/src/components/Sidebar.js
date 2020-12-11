@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Sidebar(props) {
   const classes = useStyles();
-  const { archives, description, social} = props;
+  const { archives,  social} = props;
 
   return (
     <Grid item xs={12} md={4}>
@@ -58,9 +58,9 @@ export default function Sidebar(props) {
   );
 }
 
-Sidebar.propTypes = {
-  archives: PropTypes.array,
-  description: PropTypes.string,
-  social: PropTypes.array,
-  title: PropTypes.string,
-};
+// Sidebar.propTypes = {
+//   archives: PropTypes.array,
+//   description: PropTypes.string,
+//   social: PropTypes.array,
+//   title: PropTypes.string,
+// };
