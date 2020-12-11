@@ -7,7 +7,9 @@ import WineList from './components/wineList'
 import { Route, Switch } from 'react-router-dom';
 import Reviews from "./components/reviews"
 import Blog from "./components/blog"
-
+import LoginPic from "./components/loginpic"
+import Footer from "./components/footer"
+import SignUp from "./components/signup"
 
 export default function App() {
 
@@ -66,10 +68,18 @@ export default function App() {
         <Route exact path="/blog">
           <Blog />
         </Route>
+        <Route exact path="/signin">
+          {/* <SignIn /> */}
+          <LoginPic reviews={reviews}/>
+        </Route>
+
+        <Route exact path="/signup">
+          <SignUp />
+        </Route>
 
       </Switch>
 
-
+<Footer />
       <div>
 
       </div>

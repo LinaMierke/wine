@@ -47,31 +47,36 @@ const useStyles = makeStyles((theme) => ({
     paddingBottom: theme.spacing(8),
   },
   cover: {
-    width: 151,
+    // width: 5,
   },
   card: {
     height: '100%',
     width: '100%',
-    display: 'flex',
+    // display: 'flex',
     // flexDirection: "column",
   },
   cardMedia: {
     height: '300px',
-    width: '300px',
+    width: '200px',
+    position: 'center',
+    alignItems: 'center',
+    display: 'block',
+    marginLeft: 'auto',
+    marginRight: 'auto',
     // background: 'pink'
     // paddingTop: '5%', // 16:9
   },
   cardContent: {
     // flexGrow: 1,
     // flexFlow: 'column',
-    // textAlign: 'center',
+    textAlign: 'center',
     alignItems: 'center',
     // position:'relative',
     // float: 'right',
   },
   footer: {
     backgroundColor: theme.palette.background.paper,
-    padding: theme.spacing(6),
+    padding: theme.spacing(10),
   },
   paper: {
     padding: '6px 10px',
@@ -132,8 +137,9 @@ export default function Reviews(props) {
     <div>
 
       <CssBaseline />
-      {/*   
-      {console.log(props.rerenderParentCallBack)} */}
+
+        
+      {/* {console.log(props)} */}
       <div>
         <img className="wines" src={reviews} alt="reviews" />
       </div>
@@ -213,7 +219,7 @@ export default function Reviews(props) {
                   <InputBase onChange={(e) => {
                     // console.log(e.target)
                     setText(e.target.value)
-                  }} placeholder="Search…" style={{ border: '1px solid #112A3B', padding: '3px', borderRadius: '10px' }}>
+                  }} placeholder="Search…" style={{ border: '0.1px solid #112A3B', padding: '3px', borderRadius: '10px' }}>
                     Search Review
                   </InputBase>
                 </Grid>
@@ -230,11 +236,11 @@ export default function Reviews(props) {
 
             <Container className={classes.cardGrid} maxWidth="md">
 
-              <Grid container spacing={4} className="grid">
+              <Grid container spacing={8} className="grid">
                 {props.reviews.data.filter(fCard => fCard.type.includes(searchText)).map((reviews, index) => (
-                  <Grid item key={index} xs={12} sm={12} md={12}>
+                  <Grid item key={index} xs={12} sm={12} md={6}>
                     <Card className={classes.card} >
-                      <Box component="fieldset" mb={3} borderColor="transparent">
+                      <Box component="fieldset" mb={1} borderColor="transparent">
                         <Rating name="read-only" precision={0.1} value={reviews.score} readOnly />
                       </Box>
                       

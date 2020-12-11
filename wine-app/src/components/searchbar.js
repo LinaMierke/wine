@@ -34,7 +34,7 @@ export default function SearchBar() {
 
           </Typography>
 
-          <Link to="home" style={{color:"white",textDecoration: 'none'}}>
+          <Link to="/home" style={{color:"white",textDecoration: 'none'}}>
             <Button color="inherit">Home</Button>
           </Link>
 
@@ -52,7 +52,10 @@ export default function SearchBar() {
             <Button color="inherit">Blog</Button>
 
           </Link>
-          <Button color="inherit">Sign in</Button>
+          <Link to="/signin" style={{color:"white", textDecoration: 'none'}}>
+            <Button color="inherit">Sign in</Button>
+          </Link>
+          
         </Toolbar>
       </AppBar>
     </div>
