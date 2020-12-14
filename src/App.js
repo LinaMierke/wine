@@ -29,16 +29,21 @@ export default function App() {
 
   useEffect(() => {
     const updateReviews = () => {
+      // console.log("getting reviews")
       let url2 = "https://wineoclock.herokuapp.com/reviews"
       axios.get(url2)
         .then((res) => {
           return res
         })
-        .then((reviews) => {
-          setReviews(reviews)
+        .then((res) => {
+          setReviews(res)
         })
     }
-    if (reviews) updateReviews();
+    if (reviews) {
+       updateReviews();
+    }
+    // console.log(reviews)
+   
   }, [reviews])
 
 
@@ -70,7 +75,7 @@ export default function App() {
         </Route>
         <Route exact path="/signin">
           {/* <SignIn /> */}
-          <LoginPic reviews={reviews}/>
+          <LoginPic reviews={reviews} />
         </Route>
 
         <Route exact path="/signup">
@@ -79,7 +84,7 @@ export default function App() {
 
       </Switch>
 
-<Footer />
+      <Footer />
       <div>
 
       </div>

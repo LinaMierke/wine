@@ -94,7 +94,7 @@ export default function Form(props) {
           }}
             id="outlined-textarea"
             label="Wine Picture"
-            placeholder="Upload the picture here"
+            placeholder="Upload the URL picture here"
             multiline
             variant="outlined"
           />
