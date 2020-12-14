@@ -52,7 +52,8 @@ const useStyles = makeStyles((theme) => ({
   card: {
     height: '100%',
     width: '100%',
-    
+    // fontWeight: 'bold',
+    // color: 'red',
   },
   cardMedia: {
     height: '300px',
@@ -62,6 +63,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'block',
     marginLeft: 'auto',
     marginRight: 'auto',
+ 
     
   },
   
@@ -69,7 +71,8 @@ const useStyles = makeStyles((theme) => ({
    
     textAlign: 'center',
     alignItems: 'center',
-
+    // color: 'red',
+    fontStyle: 'normal',
    
   },
   footer: {
@@ -241,7 +244,7 @@ export default function Reviews(props) {
                       
                    
                       <CardMedia className={classes.cardMedia} image={reviews.picture}/>
-                      <Rating name="read-only" precision={0.1} value={reviews.score} readOnly />
+                      <Rating name="read-only" precision={0.1} value={reviews.score} readOnly style={{marginLeft: '3%'}}/>
 
                       <CardContent >
                         <Typography variant="h5" className={classes.cardContent}>

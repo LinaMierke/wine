@@ -1,12 +1,14 @@
 .names{
     font-size: 17px;
-    font-weight: 300;
+    font-weight: 550;
     /* font-style: italic; */
     /* text-decoration: line-through; */
-
+    /* color: red; */
 }
 .tittle{
     font-size: 32px;
     font-weight: bold;
     position: center;  
+    /* font-style: normal; */
+   
 }
