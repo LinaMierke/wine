@@ -1,0 +1,25 @@
+body{
+  background-color: black;
+
+}
+.container{
+  background-image: url("https://imgur.com/ej6IZno");
+  
+  
+}
+
+.wineme{
+height:200%;
+width: 100%;
+margin-bottom: 0%;
+background-image: url("https://imgur.com/ej6IZno");
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
