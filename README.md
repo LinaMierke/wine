@@ -8,12 +8,14 @@
 ***
 Write down general information about your project. It is a good idea to always put a project status in the readme file. This is where you can add it. 
 ### Planing
+***
+Trello was usd to 
 ![Image text](https://i.imgur.com/hlgMaKn.png)
-## Technologies
+## Technologies & Sources
 ***
 A list of technologies used within the project:
-* [Technology name](https://example.com): Version 12.3 
-* [Technology name](https://example.com): Version 2.34
+* [React]: Version 17.0 
+* [Material UI](https://example.com): Version 4
 * [Library name](https://example.com): Version 1234
 ## Installation
 ***
