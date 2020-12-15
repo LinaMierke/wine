@@ -105,6 +105,7 @@ export default function Reviews(props) {
       .then(res => res.text())
       .then(res => {
         console.log(res);
+        props.updateReviews();
         
       })
   }
@@ -125,7 +126,10 @@ export default function Reviews(props) {
 
     })
       .then(res => res.text())
-      .then(res => console.log(res));
+      .then(res => {
+        console.log(res)
+        props.updateReviews()
+      });
     
   }
 

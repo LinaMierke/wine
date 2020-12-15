@@ -24,10 +24,11 @@ export default function App() {
       })
       .then((data) => {
         setWines(data)
-      })
+      }) 
+      updateReviews()
   }, [])
 
-  useEffect(() => {
+  // useEffect(() => {
     const updateReviews = () => {
       // console.log("getting reviews")
       let url2 = "https://wineoclock.herokuapp.com/reviews"
@@ -39,14 +40,14 @@ export default function App() {
           setReviews(res)
         })
     }
-    if (reviews) {
-       updateReviews();
-    }
+    // if (reviews) {
+    //    updateReviews();
+    // }
     // console.log(reviews)
    
-  }, [reviews])
+  // }, [])
 
-
+  
 
 
   return (
@@ -68,13 +69,13 @@ export default function App() {
         </Route>
 
         <Route exact path="/reviews">
-          <Reviews reviews={reviews} />
+          <Reviews reviews={reviews} updateReviews={() => updateReviews()}/>
         </Route>
         <Route exact path="/blog">
           <Blog />
         </Route>
         <Route exact path="/signin">
-          {/* <SignIn /> */}
+          
           <LoginPic reviews={reviews} />
         </Route>
 
