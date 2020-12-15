@@ -57,7 +57,7 @@ export default function App() {
 
       </div>
       <Switch>
-        <Route exact path="/home">
+        <Route exact path="/">
           <img className="wineme" src={wineme} alt="wineme" />
         </Route>
 
