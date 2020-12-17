@@ -252,6 +252,7 @@ export default function Reviews(props) {
                       <CardContent >
                         <Typography variant="h5" className={classes.cardContent}>
                           {reviews.name}
+
                         </Typography>
                        <div className="names"> Review:</div>
                         <Typography >
@@ -260,6 +261,10 @@ export default function Reviews(props) {
                         <div className="names"> Paring:</div>
                         <Typography>
                           {reviews.paring}
+                        </Typography>
+                        <div className="names"> Average Price:</div>
+                        <Typography>
+                          {reviews.price}
                         </Typography>
                         <div className="names">Type:</div>
                         <Typography>
