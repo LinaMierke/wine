@@ -51,7 +51,30 @@ export default function Form(props) {
   const [priceText, setPriceText] = useState("")
   const [image, setImage] = useState("")
 
-  
+  function handleSubmit() {
+    // console.log("hello", image,typeText, reviewText, scoreText, paringText)
+    fetch("https://wineoclock.herokuapp.com/reviews", {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        score: scoreText,
+        picture: image,
+        review: reviewText,
+        paring: paringText,
+        price: priceText,
+        type: typeText,
+      })
+    })
+      .then(res => res.json())
+      .then((res) => {
+        console.log(res);
+        props.updateReviews()
+        props.created()
+        // alert("success");
+//  props.rerenderParentCallback()
+      // props.rerenderParentCallback()
+      })
+  }
 
   return (
     <div>
@@ -118,7 +141,7 @@ export default function Form(props) {
           />
 
         </div>
-        <Button onClick={() => props.handleSubmit(typeText,paringText,scoreText,reviewText,priceText,image)}
+        <Button onClick={() => handleSubmit()}
           variant="contained"
           color="primary"
           style={{ backgroundColor: '#112A3B' }}

@@ -132,37 +132,12 @@ export default function Reviews(props) {
       });
     
   }
-  function handleSubmit(typeText,paringText,scoreText,reviewText,priceText,image) {
-    // console.log("hello", picture,typeText, reviewText, scoreText, paringText)
-    fetch("https://wineoclock.herokuapp.com/reviews", {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        score: scoreText,
-        picture: image,
-        review: reviewText,
-        paring: paringText,
-        price: priceText,
-        type: typeText,
-      })
-    })
-      .then(res => res.json())
-      .then((res) => {
-        console.log(res);
-        props.updateReviews()
-        // props.created()
-        // alert("success");
-//  props.rerenderParentCallback()
-      // props.rerenderParentCallback()
-      })
-  }
-
 
 
   return (
 
     <div>
-
+{/* {console.log("we are in reviews", props)} */}
       <CssBaseline />
 
         
@@ -258,7 +233,7 @@ export default function Reviews(props) {
         {
           create === true
             ?
-            <Form handleSubmit={()=> handleSubmit()} created={()=>setCreate(false)} />
+            <Form  created={()=>setCreate(false)} updateReviews={()=>props.updateReviews()}/>
             :
 
             <Container className={classes.cardGrid} maxWidth="md">
