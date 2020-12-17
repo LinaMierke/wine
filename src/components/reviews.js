@@ -221,7 +221,7 @@ export default function Reviews(props) {
                   <InputBase onChange={(e) => {
                     // console.log(e.target)
                     setText(e.target.value)
-                  }} placeholder="Search…" style={{ border: '0.1px solid #112A3B', padding: '3px', borderRadius: '10px' }}>
+                  }} placeholder="Search…" style={{ border: '0.1px solid #112A3B', padding: '3px', borderRadius: '10px', paddingLeft:'0.2em' }}>
                     Search Review
                   </InputBase>
                 </Grid>
