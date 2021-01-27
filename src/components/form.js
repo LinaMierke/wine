@@ -71,21 +71,23 @@ export default function Form(props) {
         props.updateReviews()
         props.created()
         // alert("success");
-//  props.rerenderParentCallback()
-      // props.rerenderParentCallback()
+        //  props.rerenderParentCallback()
+        // props.rerenderParentCallback()
       })
   }
 
   return (
     <div>
-     
+
       <form className={classes.root} noValidate autoComplete="off">
         <div>
-        
+
 
           <TextField onChange={(e) => {
             console.log(e.target)
-            setImage(e.target.value)
+            e.target.value == "" ? setImage("https://cdn5.vectorstock.com/i/1000x1000/13/49/empty-wine-glass-vector-9761349.jpg")
+              :
+              setImage(e.target.value)
           }}
             id="outlined-textarea"
             label="Wine Picture"

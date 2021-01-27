@@ -8,13 +8,13 @@ export default function Footer() {
 
   return (
     <div className="container">
-      <footer>
+      <footer> 
         <section className="ft-main">
           <div className="main-item">
             <h2 className="ft-title">About</h2>
             <ul>
               <li>Services</li>
-              <li>Portfolio</li>
+              <li>About</li>
               <li>Pricing</li>
               <li>Customers</li>
               <li>Careers</li>
